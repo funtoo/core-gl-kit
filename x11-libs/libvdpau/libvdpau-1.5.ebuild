@@ -1,9 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 VIRTUALX_REQUIRED="test"
-inherit flag-o-matic meson multilib-minimal virtualx
+inherit flag-o-matic meson virtualx
 
 DESCRIPTION="VDPAU wrapper and trace libraries"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/VDPAU"
@@ -33,7 +32,7 @@ src_prepare() {
 	default
 }
 
-multilib_src_configure() {
+src_configure() {
 	append-cppflags -D_GNU_SOURCE
 	local emesonargs=(
 		-Ddri2=$(usex dri true false)
@@ -42,15 +41,7 @@ multilib_src_configure() {
 	meson_src_configure
 }
 
-multilib_src_compile() {
-	meson_src_compile
-}
-
-multilib_src_test() {
-	virtx meson_src_test
-}
-
-multilib_src_install() {
+src_install() {
 	meson_src_install
 	find "${ED}" -name '*.la' -delete || die
 }

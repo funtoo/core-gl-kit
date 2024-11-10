@@ -86,7 +86,7 @@ RDEPEND="
 	vaapi? (
 		>=x11-libs/libva-1.7.3:=
 	)
-	vdpau? ( >=x11-libs/libvdpau-1.4:= )
+	vdpau? ( >=x11-libs/libvdpau-1.5:= )
 	video_cards_radeonsi? ( virtual/libelf:0= )
 	selinux? ( sys-libs/libselinux )
 	wayland? ( >=dev-libs/wayland-1.18.0 )
